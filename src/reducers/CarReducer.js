@@ -1,3 +1,5 @@
+import { ADD_FEATURE } from "../actions";
+
 const initialState = {
   additionalPrice: 0,
   car: {
@@ -17,6 +19,27 @@ const initialState = {
 
 export const CarReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_FEATURE:
+      const names = state.car.features.map(item => item.name.toLowerCase());
+
+      if (names.indexOf(action.payload.name.toLowerCase()) === -1) {
+        return {
+          ...state,
+          car: {
+            ...state.car,
+            features: [...state.car.features, action.payload]
+          }
+        };
+      } else {
+        alert("Item already exists!");
+        return {
+          ...state,
+          car: {
+            ...state.car,
+            features: state.car.features
+          }
+        };
+      }
     default:
       return state;
   }
