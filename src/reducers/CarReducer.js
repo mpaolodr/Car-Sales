@@ -1,4 +1,4 @@
-import { ADD_FEATURE } from "../actions";
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -19,6 +19,7 @@ const initialState = {
 
 export const CarReducer = (state = initialState, action) => {
   switch (action.type) {
+    //   add feature
     case ADD_FEATURE:
       const names = state.car.features.map(item => item.name.toLowerCase());
 
@@ -40,6 +41,18 @@ export const CarReducer = (state = initialState, action) => {
           }
         };
       }
+
+    //   remove feature
+    case REMOVE_FEATURE:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            item => item.id !== action.payload.id
+          )
+        }
+      };
     default:
       return state;
   }
