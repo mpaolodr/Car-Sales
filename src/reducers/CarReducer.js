@@ -55,6 +55,8 @@ export const CarReducer = (state = initialState, action) => {
           )
         }
       };
+
+    //   default
     default:
       return state;
   }
