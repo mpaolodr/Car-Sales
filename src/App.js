@@ -17,15 +17,24 @@ const App = () => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <Header />
+        {/* <AddedFeatures/> */}
       </div>
-      <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
-      </div>
+      <div className="box">{/* <AdditionalFeatures/>
+        <Total/> */}</div>
     </div>
   );
 };
 
 export default App;
+
+// {/* <div className="boxes">
+//   <div className="box">
+//     <Header car={state.car} />
+//     <AddedFeatures car={state.car} />
+//   </div>
+//   <div className="box">
+//     <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
+//     <Total car={state.car} additionalPrice={state.additionalPrice} />
+//   </div>
+// </div> */}
