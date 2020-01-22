@@ -26,6 +26,7 @@ export const CarReducer = (state = initialState, action) => {
       if (names.indexOf(action.payload.name.toLowerCase()) === -1) {
         return {
           ...state,
+          additionalPrice: state.additionalPrice + action.payload.price,
           car: {
             ...state.car,
             features: [...state.car.features, action.payload]
@@ -46,6 +47,7 @@ export const CarReducer = (state = initialState, action) => {
     case REMOVE_FEATURE:
       return {
         ...state,
+        additionalPrice: state.additionalPrice - action.payload.price,
         car: {
           ...state.car,
           features: state.car.features.filter(
