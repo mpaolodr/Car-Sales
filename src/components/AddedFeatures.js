@@ -1,24 +1,23 @@
 import React from "react";
-import { connect } from "react-redux";
-
-// actions
-import { removeFeature } from "../actions";
+import { useSelector, useDispatch } from "react-redux";
 
 //components
 import AddedFeature from "./AddedFeature";
 
-const AddedFeatures = ({ car, removeFeature }) => {
+const AddedFeatures = () => {
+  // useSelector
+  const car = useSelector(state => state.CarReducer.car);
+
+  // useDispatch hook
+  const dispatch = useDispatch();
+
   return (
     <div className="content">
       <h6>Added features:</h6>
       {car.features.length ? (
         <ol type="1">
           {car.features.map(item => (
-            <AddedFeature
-              key={item.id}
-              feature={item}
-              removeFeature={removeFeature}
-            />
+            <AddedFeature key={item.id} feature={item} dispatch={dispatch} />
           ))}
         </ol>
       ) : (
@@ -28,10 +27,4 @@ const AddedFeatures = ({ car, removeFeature }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    car: state.CarReducer.car
-  };
-};
-
-export default connect(mapStateToProps, { removeFeature })(AddedFeatures);
+export default AddedFeatures;

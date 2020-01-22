@@ -1,10 +1,15 @@
 import React from "react";
 
-const AdditionalFeature = ({ feature, addFeature }) => {
+//action type
+import { ADD_FEATURE } from "../actions";
+
+const AdditionalFeature = ({ feature, dispatch }) => {
   return (
     <li>
-      {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button" onClick={() => addFeature(feature)}>
+      <button
+        className="button"
+        onClick={() => dispatch({ type: ADD_FEATURE, payload: feature })}
+      >
         Add
       </button>
       {feature.name} (+{feature.price})
